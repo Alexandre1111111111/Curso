@@ -1,0 +1,57 @@
+body{
+    background-color: #41dd2d;
+}
+.professores{
+    width: 940px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.professores li{
+    display: inline;block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 1.5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+}
+
+.professor li:hover{
+    border-color: #41dd2d;
+}
+
+.professor li: :active{
+    border-color:#000000;
+}
+
+professor li: hover h2{
+    font-size: 34px;
+}
+
+.professor-d{
+    font-size: 188px;
+}
+.professor-p{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+footer{
+    background-color: #41dd2d;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.copyright{
+    color: aquamarine;
+    font-size: 13px;
+    padding: 40px 0;
+}
+
+main{
+    width: 940px;
+    margin: 0 auto;
+}

@@ -1,0 +1,68 @@
+.titulo{
+   text-emphasis-color:#b12929 ; 
+   text-align: center;
+}
+.tit2{
+    text-align: center;
+}
+.tit3{
+    text-align: center;
+}
+.tit4{
+    text-align: center;
+}
+.tit5{
+    text-align: center;
+}
+.tit6{
+    text-align: center;
+}
+.tit7{
+    text-align: center;
+}
+.tit8{
+    text-align: center;
+}
+
+body{
+    background-color: beige;
+    margin: 0;
+}
+#tecimg {
+    margin: 0 auto;
+    display: block;
+    height: 200px;
+    border: 2px solid blueviolet;
+}
+.subt {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.head {
+    background-color: rgb(92, 218, 218);
+    border: 3px solid blue;
+}
+body{
+    background-color: bisque;
+}
+
+header{
+    background: #f3f3f3;
+}
+nav a:hover{
+    color: burlywood;
+    text-decoration: underline;
+}
+#ahpo {
+    overflow: hidden;
+    list-style-type: none;
+}
+#ahpo li {
+    float: left;
+}
+#ahpo li a {
+    padding-left: 15px;
+    font-size: 30px;
+    text-decoration: none;
+}
