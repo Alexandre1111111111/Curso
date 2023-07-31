@@ -1,32 +1,36 @@
 .titulo{
    text-emphasis-color:#b12929 ; 
    text-align: center;
+   padding-top: 80px;
+   text-shadow: 1px 1px 1px 	black;
 }
 .tit2{
     text-align: center;
+    text-shadow: 1px 1px 1px 	black;
 }
 .tit3{
     text-align: center;
+    text-shadow: 1px 1px 1px 	black;
 }
 .tit4{
     text-align: center;
+    text-shadow: 1px 1px 1px 	black;
 }
 .tit5{
     text-align: center;
+    text-shadow: 1px 1px 1px 	black;
 }
 .tit6{
     text-align: center;
+    text-shadow: 1px 1px 1px 	black;
 }
 .tit7{
     text-align: center;
+    text-shadow: 1px 1px 1px 	black;
 }
 .tit8{
     text-align: center;
-}
-
-body{
-    background-color: beige;
-    margin: 0;
+    text-shadow: 1px 1px 1px 	black;
 }
 #tecimg {
     margin: 0 auto;
@@ -38,17 +42,22 @@ body{
     display: flex;
     justify-content: center;
     text-align: center;
+    text-shadow: 1px 1px 1px 	black;
 }
 .head {
     background-color: rgb(92, 218, 218);
     border: 3px solid blue;
+    right: 0px;
+    left: 0px;
 }
 body{
-    background-color: bisque;
+    background: center / cover url(imgmain.jpg);
+    margin: 0;
 }
-
 header{
     background: #f3f3f3;
+    position: fixed;
+    top: 0px;
 }
 nav a:hover{
     color: burlywood;
@@ -63,6 +72,19 @@ nav a:hover{
 }
 #ahpo li a {
     padding-left: 15px;
+    padding-right: 15px;
     font-size: 30px;
     text-decoration: none;
+    border-right: 2px solid #973fb3;
+}
+html {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(0, 255, 255);
+    font-family: "Roboto", sans-serif;
+}
+p {
+    color: rgb(108, 218, 252);
+    margin-left: 80px;
+    margin-right: 80px;
 }
