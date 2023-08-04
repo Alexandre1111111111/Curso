@@ -7,30 +7,37 @@
 .tit2{
     text-align: center;
     text-shadow: 1px 1px 1px 	black;
+    font-size: 40px;
 }
 .tit3{
     text-align: center;
     text-shadow: 1px 1px 1px 	black;
+    font-size: 45px;
 }
 .tit4{
     text-align: center;
     text-shadow: 1px 1px 1px 	black;
+    font-size: 35px;
 }
 .tit5{
     text-align: center;
     text-shadow: 1px 1px 1px 	black;
+    font-size: 35px;
 }
 .tit6{
     text-align: center;
     text-shadow: 1px 1px 1px 	black;
+    font-size: 35px;
 }
 .tit7{
     text-align: center;
     text-shadow: 1px 1px 1px 	black;
+    font-size: 35px;
 }
 .tit8{
     text-align: center;
     text-shadow: 1px 1px 1px 	black;
+    font-size: 35px;
 }
 #tecimg {
     margin: 0 auto;
@@ -51,40 +58,71 @@
     left: 0px;
 }
 body{
-    background: center / cover url(imgmain.jpg);
+    background: center / cover url(mainback.jpg);
     margin: 0;
 }
 header{
     background: #f3f3f3;
     position: fixed;
     top: 0px;
-}
-nav a:hover{
-    color: burlywood;
-    text-decoration: underline;
-}
-#ahpo {
-    overflow: hidden;
-    list-style-type: none;
-}
-#ahpo li {
-    float: left;
-}
-#ahpo li a {
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 30px;
-    text-decoration: none;
-    border-right: 2px solid #973fb3;
+    height: 90px;
 }
 html {
     text-align: center;
     font-size: 25px;
-    color: rgb(0, 255, 255);
+    color: rgb(255, 225, 52);
     font-family: "Roboto", sans-serif;
 }
 p {
-    color: rgb(108, 218, 252);
+    color: rgb(179, 226, 118);
     margin-left: 80px;
     margin-right: 80px;
+}
+.Eng {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 7px;
+}
+.Eng img {
+    max-height: 70px;
+    visibility: visible;
+}
+.btnMain {
+    display: inline-block;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+}
+.Eng a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px 15px;
+}
+.drop {
+    display: none;
+    position: absolute;
+    background-color: rgb(121, 219, 226);
+    left: 0px;
+    min-width: 100px;
+    box-shadow: 1px 1px 1px #000;
+    z-index: 1;
+    min-height: 3000px;
+}
+.show {
+    display:block;
+}
+.drop a:hover {
+    background-color: #82a5e7;
+}
+.Linha {
+    max-width: auto;
+    height: 5px;
+    background-color: #a88011;
+    border-color: #39adad;
+    margin-top: 70px;
+    margin-bottom: 60px;
+    transition-duration: 0.5s;
 }
