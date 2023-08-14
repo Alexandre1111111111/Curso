@@ -1,7 +1,7 @@
 .titulo{
    text-emphasis-color:#b12929 ; 
    text-align: center;
-   padding-top: 80px;
+   padding-top: 110px;
    text-shadow: 1px 1px 1px 	black;
 }
 .tit2{
@@ -43,7 +43,7 @@
     margin: 0 auto;
     display: block;
     height: 200px;
-    border: 2px solid blueviolet;
+    border: 2px solid rgb(195, 226, 40);
 }
 .subt {
     display: flex;
@@ -53,16 +53,17 @@
 }
 .head {
     background-color: rgb(92, 218, 218);
-    border: 3px solid blue;
+    border: 3px solid rgb(188, 246, 82);
     right: 0px;
     left: 0px;
 }
 body{
     background: center / cover url(mainback.jpg);
     margin: 0;
+    line-height: 1.5;
 }
 header{
-    background: #f3f3f3;
+    background: center / cover url(head.jpg);
     position: fixed;
     top: 0px;
     height: 90px;
@@ -104,7 +105,7 @@ p {
 .drop {
     display: none;
     position: absolute;
-    background-color: rgb(121, 219, 226);
+    background-color: rgb(247, 235, 59);
     left: 0px;
     min-width: 100px;
     box-shadow: 1px 1px 1px #000;
@@ -115,7 +116,7 @@ p {
     display:block;
 }
 .drop a:hover {
-    background-color: #82a5e7;
+    background-color: #c8cf45;
 }
 .Linha {
     max-width: auto;
