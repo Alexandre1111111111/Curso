@@ -1,0 +1,86 @@
+#tlt {
+    padding-top: 120px;
+    text-shadow: 3px 3px 2px #000;
+}
+html {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(255, 219, 58);
+    font-family: "Roboto", sans-serif;
+}
+body{
+    background: url(Gback.jpg);
+    background-size: cover;
+    margin: 0;
+    line-height: 1.5;
+}
+header{
+    background: center / cover url(head.jpg);
+    position: fixed;
+    top: 0px;
+    height: 90px;
+}
+.Eng {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 7px;
+}
+.Eng img {
+    max-height: 70px;
+    visibility: visible;
+}
+.btnMain {
+    display: inline-block;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+}
+.Eng a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px 15px;
+}
+.drop {
+    display: none;
+    position: absolute;
+    background-color: rgb(247, 235, 59);
+    left: -5px;
+    min-width: 100px;
+    box-shadow: 1px 1px 1px #000;
+    z-index: 1;
+    min-height: 3000px;
+}
+.show {
+    display:block;
+}
+.drop a:hover {
+    background-color: #c8cf45;
+}
+.head {
+    background-color: rgb(92, 218, 218);
+    border: 3px solid rgb(188, 246, 82);
+    right: 0px;
+    left: 0px;
+}
+.Jog {
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
+#Snk {
+    height: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #c8cf45;
+    cursor: pointer;
+}
+#Sn {
+    margin: 0px;
+    color: #f7ff62;
+}
+#Sk {
+    text-decoration: none;
+}

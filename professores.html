@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,57 +11,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <header>
-                   
-        <div class="o_tec">
-            <h1><img src="tec.jpeg"></h1>
-
-            <nav>
-                    <ul>
-                        <li><a href="alunos.html">Alunos</a></li>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="professores.html">Professores</a></li>
-                        <li><a href="o_tec.html">O CUrso</a></li>
-
-                        
-                    </ul>
-           
-             </nav>
-           
- </header>   
+    <header class="head">            
+        <div class="Eng">
+            <button type="button" id="Mainbtn" onclick="Dropbox()" class="btnMain"><img id="Top" src="https://cdn-icons-png.flaticon.com/512/6631/6631481.png" alt=""></button>
+            <div class="drop" id="Box">
+                <a href="index.html">Curso</a>
+                <a href="alunos.html">Alunos</a>
+                <a href="professores.html">Professores</a>
+                <a href="Games.html">Jogos</a>
+            </div>
+            </div>
+     </header>    
     <h1>PROFESSORES</h1>
 
     <main>
-        <ul class= "professores">
-            <li>
-                <h2>David</h2>
-                <img src="david.jpeg">
-                <p class = "professor-d">o garoto do programa</p>
-                <p class = "professor-p">o maromba</p>
-            </li>
-       
-      
-            <li>
-                <h2>Gleiciane</h2>
-                <img src="gleici.png">
-                <p class="professor-d">a historiadora</p>
-                <p class="professor-p">herdeira do trono do Brasil</p>
-            
-            </li>
-  
-            <li>
-                <h2>Thiago</h2>
-                <img src="titi.avif">
-                <p class="professor-d">o supremo ADM</p>
-                <p class="professor-p">ele que manda '-'</p>
-            </li>
-        </ul>
+        <div class= "professores">
+            <h2>David</h2>
+            <img src="david.jpeg">
+            <p class = "professor-d">o garoto do programa</p>
+            <p class = "professor-p">o maromba</p>
+
+            <h2>Gleiciane</h2>
+            <img src="gleici.png">
+            <p class="professor-d">a historiadora</p>
+            <p class="professor-p">herdeira do trono do Brasil</p>
+
+            <h2>Thiago</h2>
+            <p class="professor-d">o supremo ADM</p>
+            <p class="professor-p">ele que manda '-'</p>
+        </div>
     </main>
 
     <footer>
         <img src="putimreb.jpg">
         <p class="rodape">copiraiti 2015 kapakapakapa</p>
     </footer>
+    <Script src="script.js"></Script>
 </body>
 </html>
