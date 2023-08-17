@@ -62,4 +62,55 @@ header{
 }
 #titl {
     padding-top: 80px;
+    text-shadow: 2px 2px 2px #000;
+    color: #fbff00;
+    background-color: rgb(202, 97, 10);
+    border-radius: 20px;
+    border: 2px solid #c8cf45;
+}
+.Ft {
+    border: 3px solid #a88011;
+    font-size: 15px;
+    padding: 50px;
+    padding-bottom: 20px;
+    color: #e4b432;
+    margin-top: 100px;
+    background: center / cover url(ftr.jpg);
+    text-shadow: 2px 2px 2px #000; 
+}
+#ftimg {
+    height: 150px;
+    margin: 0;
+}
+p {
+    margin: 50px;
+    text-shadow: 1px 1px 1px #000;
+    background-color: rgb(202, 97, 10);
+    border-radius: 20px;
+    border: 2px solid #c8cf45;
+    padding: 10px;
+}
+#tbl {
+    width: 600px;
+    margin: 0 auto;
+}
+.tb {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #c25700;
+}
+.tb, th, td {
+    border:1px solid rgb(85, 64, 7);
+    text-shadow: 1px 1px 1px #000;
+    padding: 5px;
+}
+td {
+    text-align: left;
+}
+th {
+    text-shadow: 2px 2px 2px #000;
+}
+.num {
+    text-align: center;
 }

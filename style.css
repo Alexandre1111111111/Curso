@@ -127,3 +127,17 @@ p {
     margin-bottom: 60px;
     transition-duration: 0.5s;
 }
+.Ft {
+    border: 3px solid #a88011;
+    font-size: 15px;
+    padding: 50px;
+    padding-bottom: 20px;
+    color: #e4b432;
+    margin-top: 100px;
+    background: center / cover url(ftr.jpg);
+    text-shadow: 2px 2px 2px #000; 
+}
+#ftimg {
+    height: 150px;
+    margin: 0;
+}

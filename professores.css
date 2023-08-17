@@ -4,6 +4,7 @@
 }
 h1 {
     padding-top: 80px;
+    text-shadow: 3px 3px 3px #000; 
 }
 .professores li{
     display: inline;
@@ -92,4 +93,26 @@ header{
     border: 3px solid rgb(188, 246, 82);
     right: 0px;
     left: 0px;
+}
+.Ft {
+    border: 3px solid #a88011;
+    font-size: 15px;
+    padding: 50px;
+    padding-bottom: 20px;
+    color: #e4b432;
+    margin-top: 100px;
+    background: center / cover url(ftr.jpg);
+}
+#ftimg {
+    height: 150px;
+    margin: 0;
+}
+#dvi {
+    border: 2px solid #a88011;
+}
+p {
+    text-shadow: 1px 1px 1px #000;
+}
+h2 {
+    text-shadow: 2px 2px 2px #000; 
 }
