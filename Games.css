@@ -42,6 +42,7 @@ header{
     text-decoration: none;
     font-size: 30px;
     padding: 10px 15px;
+    text-align: left;
 }
 .drop {
     display: none;

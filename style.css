@@ -101,12 +101,13 @@ p {
     text-decoration: none;
     font-size: 30px;
     padding: 10px 15px;
+    text-align: left;
 }
 .drop {
     display: none;
     position: absolute;
     background-color: rgb(247, 235, 59);
-    left: 0px;
+    left: -5px;
     min-width: 100px;
     box-shadow: 1px 1px 1px #000;
     z-index: 1;

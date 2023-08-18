@@ -1,21 +1,15 @@
-.professores{
-    width: 940px;
-    margin: 0 auto;
-}
 h1 {
     padding-top: 80px;
     text-shadow: 3px 3px 3px #000; 
+    color: #e4b432;
 }
 .professores li{
-    display: inline;
     text-align: center;
-    width: 30%;
     margin: 0;
-    padding: 30px 20px;
-    border: 2px solid #000000;
-}
-.professor li:hover{
-    border-color: #41dd2d;
+    padding: 30px;
+    list-style-type: none;
+    text-shadow: 2px 2px 2px #000;
+    padding-right: 65px;
 }
 .professor-p{
     font-size: 22px;
@@ -71,6 +65,7 @@ header{
     text-decoration: none;
     font-size: 30px;
     padding: 10px 15px;
+    text-align: left;
 }
 .drop {
     display: none;
@@ -115,4 +110,14 @@ p {
 }
 h2 {
     text-shadow: 2px 2px 2px #000; 
+    color: #e4b432;
+}
+h3 {
+    text-shadow: 2px 2px 2px #000; 
+    color: #e4b432;
+}
+#Th {
+    height: 250px;
+    margin: 0 auto;
+    border: 2px solid #a88011;
 }
