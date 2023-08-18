@@ -1,6 +1,7 @@
-function Dropbox() {
+const dbox = document.querySelector("#Mainbtn");
+dbox.addEventListener("click", () => {
     document.getElementById("Box").classList.toggle("show");
-  }
+  });
     window.onclick = function(event) {
     if (!event.target.matches('.Eng img')) {
       var dropdowns = document.getElementsByClassName("drop");
@@ -13,6 +14,33 @@ function Dropbox() {
       }
     }
   }
+try{
+const tpco = document.getElementById("Top");
+tpco.style.transitionDuration = "0.3s";
+tpco.addEventListener("mouseover", () =>{
+  tpco.style.height = "68px";
+  tpco.style.paddingBottom = "2px";
+});
+tpco.addEventListener("mouseout", () =>{
+  tpco.style.height = "70px";
+  tpco.style.paddingBottom = "0px";
+});
+const cob = document.getElementById("Snk");
+const txsn = document.getElementById("Sn");
+cob.style.transitionDuration = "0.2s";
+txsn.style.transitionDuration = "0.2s";
+cob.addEventListener("mouseover", () => {
+  cob.style.borderColor = "#d99f21";
+  cob.style.height = "155px";
+  txsn.style.color = "#f5bd45";
+});
+cob.addEventListener("mouseout", () => {
+  cob.style.borderColor = "#c8cf45";
+  cob.style.height = "150px";
+  txsn.style.color = "#c8cf45";
+});
+  }
+catch {
 const gameBoard = document.querySelector("#gameBoard");
 const ctx = gameBoard.getContext("2d");
 const scoreText = document.querySelector("#scoreText");
@@ -39,9 +67,12 @@ let snake = [
 ];
 
 window.addEventListener("keydown", changeDirection);
-resetBtn.addEventListener("click", resetGame);
-
-gameStart();
+if (gameStart) {
+  resetBtn.addEventListener("click", resetGame);
+}
+else {
+  resetBtn.addEventListener("click", gameStart);
+}
 
 function gameStart(){
   running = true;
@@ -49,6 +80,9 @@ function gameStart(){
   createFood();
   drawFood();
   nextTick();
+  if (resetBtn.innerHTML == "Começar") {
+    resetBtn.innerHTML = "Resetar";
+  }
 };
 function nextTick(){
   if(running) {
@@ -174,12 +208,14 @@ function resetGame(){
   ];
   gameStart();
 };
-const rst = document.getElementById("resetBtn");
-function resetbdr(){
+
+const rst = document.querySelector("#resetBtn");
+rst.addEventListener("mouseover", () => {
   rst.style.border = "4px solid #996600";
   rst.style.width = "105px";
-}
-function rstout(){
+});
+rst.addEventListener("mouseout", () => {
   rst.style.border = "4px solid #f1c343";
   rst.style.width = "100px";
-}
+});
+  }

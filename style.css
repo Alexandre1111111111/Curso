@@ -97,11 +97,12 @@ p {
 }
 .Eng a{
     display: block;
-    color: black;
+    color: rgb(99, 57, 10);
     text-decoration: none;
     font-size: 30px;
     padding: 10px 15px;
     text-align: left;
+    border: 1px solid #d69739;
 }
 .drop {
     display: none;
