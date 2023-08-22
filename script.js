@@ -17,13 +17,12 @@ dbox.addEventListener("click", () => {
 try{
 const tpco = document.getElementById("Top");
 tpco.style.transitionDuration = "0.3s";
+tpco.style.position = "relative";
 tpco.addEventListener("mouseover", () =>{
-  tpco.style.height = "68px";
-  tpco.style.paddingBottom = "2px";
+  tpco.style.right = "3px";
 });
 tpco.addEventListener("mouseout", () =>{
-  tpco.style.height = "70px";
-  tpco.style.paddingBottom = "0px";
+  tpco.style.right = "0px";
 });
 const cob = document.getElementById("Snk");
 const txsn = document.getElementById("Sn");
@@ -208,14 +207,13 @@ function resetGame(){
   ];
   gameStart();
 };
-
 const rst = document.querySelector("#resetBtn");
 rst.addEventListener("mouseover", () => {
   rst.style.border = "4px solid #996600";
-  rst.style.width = "105px";
+  rst.style.width = "120px";
 });
 rst.addEventListener("mouseout", () => {
   rst.style.border = "4px solid #f1c343";
-  rst.style.width = "100px";
+  rst.style.width = "115px";
 });
-  }
+}
