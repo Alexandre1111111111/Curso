@@ -52,6 +52,7 @@ const foodColor = "red";
 const unitSize = 25;
 const eatAudio = new Audio('eatAudio.mp3');
 const gameOverAudio = new Audio('gameOverSk.wav');
+const rst = document.querySelector("#resetBtn");
 let running = false;
 let xVelocity = unitSize;
 let yVelocity = 0;
@@ -212,7 +213,7 @@ function checkGameOver(){
 };
 function displayGameOver(){
   ctx.font = "50px Roboto";
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "#cc3300";
   ctx.textAlign = "center";
   ctx.fillText("FIM DE JOGO!", gameWidth / 2, gameHeight / 2);
   running = false;
@@ -239,7 +240,6 @@ function resetGame(){
   ];
   gameStart();
 };
-const rst = document.querySelector("#resetBtn");
 rst.addEventListener("mouseover", () => {
   rst.style.border = "4px solid #996600";
   rst.style.width = "120px";

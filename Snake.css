@@ -94,6 +94,10 @@ header{
     color: #5e470a;
     background-color: rgb(250, 223, 182);
 }
+#resetBtn:active {
+    color: #8637b4;
+    background-color: rgb(238, 226, 208);
+}
 .toolsBar {
     max-width: 300px;
     max-height: 50px;
