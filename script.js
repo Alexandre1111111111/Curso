@@ -71,6 +71,12 @@ const volumeBtn = document.querySelector("#volumeBtn");
 volumeBtn.addEventListener("click", () => {
   if (volumeBtn.src == "https://cdn-icons-png.flaticon.com/512/6996/6996058.png") {
     volumeBtn.src = "https://cdn-icons-png.flaticon.com/512/727/727240.png";
+    if (gameOverAudio.play) {
+      gameOverAudio.pause();
+    }
+    if (eatAudio.play) {
+      eatAudio.pause();
+    }
     volumeBtn.style.height = "40px";
     volumeBtn.style.top = "5px";
   }
