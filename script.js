@@ -1,4 +1,5 @@
 const dropBox = document.querySelector("#Mainbtn");
+
 dropBox.addEventListener("click", () => {
     document.getElementById("Box").classList.toggle("show");
   });
@@ -14,6 +15,7 @@ dropBox.addEventListener("click", () => {
       }
     }
   }
+
 try{
 const topico = document.getElementById("Top");
 topico.style.transitionDuration = "0.3s";
@@ -38,6 +40,7 @@ cobraImg.addEventListener("mouseout", () => {
   textImg.style.color = "#c8cf45";
 });
   }
+
 catch {
 const gameBoard = document.querySelector("#gameBoard");
 const ctx = gameBoard.getContext("2d");
@@ -121,10 +124,12 @@ function nextTick(){
     displayGameOver();
   }
 };
+
 function clearBoard(){
   ctx.fillStyle = boardBackground;
   ctx.fillRect(0, 0, gameWidth, gameHeight)
 };
+
 function createFood(){
   function randomFood(min, max){
     const randNum = Math.round((Math.random() * (max - min) + min) / unitSize) * unitSize;
@@ -133,10 +138,12 @@ function createFood(){
   foodX = randomFood(0, gameWidth - unitSize);
   foodY = randomFood(0, gameWidth - unitSize);
 };
+
 function drawFood(){
   ctx.fillStyle = foodColor;
   ctx.fillRect(foodX, foodY, unitSize, unitSize);
 };
+
 function moveSnake(){
   const head = {x: snake[0].x + xVelocity, 
                 y: snake[0].y + yVelocity};
@@ -157,6 +164,7 @@ function moveSnake(){
     snake.pop();
   }
 };
+
 function drawSnake(){
   ctx.fillStyle = snakeColor;
   ctx.strokeStyle = snakeBorder;
@@ -165,12 +173,20 @@ function drawSnake(){
     ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
   })
 };
+
 function changeDirection(event){
+
   const keyPressed = event.keyCode;
   const LEFT = 37;
   const UP = 38;
   const RIGHT = 39;
   const DOWN = 40;
+  const A = 65;
+  const D = 68;
+  const S = 83;
+  const W = 87;
+  const R = 82;
+
 
   const goingUp = (yVelocity == -unitSize);
   const goingDown = (yVelocity == unitSize);
@@ -194,8 +210,28 @@ function changeDirection(event){
       xVelocity = 0;
       yVelocity = unitSize;
       break;
+      case(keyPressed == A && !goingRight):
+      xVelocity = -unitSize;
+      yVelocity = 0;
+      break;
+      case(keyPressed == W && !goingDown):
+      xVelocity = 0;
+      yVelocity = -unitSize;
+      break;
+      case(keyPressed == D && !goingLeft):
+      xVelocity = unitSize;
+      yVelocity = 0;
+      break;
+      case(keyPressed == S && !goingUp):
+      xVelocity = 0;
+      yVelocity = unitSize;
+      break;
+      case(keyPressed == R):
+      resetGame();
+      break;
   }
 };
+
 function checkGameOver(){
   switch(true) {
     case (snake[0].x < 0):
@@ -217,6 +253,7 @@ function checkGameOver(){
     }
   }
 };
+
 function displayGameOver(){
   ctx.font = "50px Roboto";
   ctx.fillStyle = "#cc3300";
@@ -233,6 +270,7 @@ function displayGameOver(){
     gameOverAudio.pause();
   }
 };
+
 function resetGame(){
   score = 0;
   xVelocity = unitSize;
@@ -246,10 +284,12 @@ function resetGame(){
   ];
   gameStart();
 };
+
 rst.addEventListener("mouseover", () => {
   rst.style.border = "4px solid #996600";
   rst.style.width = "120px";
 });
+
 rst.addEventListener("mouseout", () => {
   rst.style.border = "4px solid #f1c343";
   rst.style.width = "115px";
