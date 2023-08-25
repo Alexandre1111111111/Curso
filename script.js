@@ -1,5 +1,5 @@
-const dbox = document.querySelector("#Mainbtn");
-dbox.addEventListener("click", () => {
+const dropBox = document.querySelector("#Mainbtn");
+dropBox.addEventListener("click", () => {
     document.getElementById("Box").classList.toggle("show");
   });
     window.onclick = function(event) {
@@ -15,28 +15,27 @@ dbox.addEventListener("click", () => {
     }
   }
 try{
-const tpco = document.getElementById("Top");
-tpco.style.transitionDuration = "0.3s";
-tpco.style.position = "relative";
-tpco.addEventListener("mouseover", () =>{
-  tpco.style.right = "3px";
+const topico = document.getElementById("Top");
+topico.style.transitionDuration = "0.3s";
+topico.style.position = "relative";
+topico.addEventListener("mouseover", () =>{
+  topico.style.right = "3px";
 });
-tpco.addEventListener("mouseout", () =>{
-  tpco.style.right = "0px";
+topico.addEventListener("mouseout", () =>{
+  topico.style.right = "0px";
 });
-const cob = document.getElementById("Snk");
-const txsn = document.getElementById("Sn");
-cob.style.transitionDuration = "0.2s";
-txsn.style.transitionDuration = "0.2s";
-cob.addEventListener("mouseover", () => {
-  cob.style.borderColor = "#d99f21";
-  cob.style.height = "155px";
-  txsn.style.color = "#f5bd45";
+const cobraImg = document.getElementById("Snk");
+const textImg = document.getElementById("Sn");
+cobraImg.style.transitionDuration = "0.2s";
+cobraImg.addEventListener("mouseover", () => {
+  cobraImg.style.borderColor = "#d99f21";
+  cobraImg.style.height = "155px";
+  textImg.style.color = "#f5bd45";
 });
-cob.addEventListener("mouseout", () => {
-  cob.style.borderColor = "#c8cf45";
-  cob.style.height = "150px";
-  txsn.style.color = "#c8cf45";
+cobraImg.addEventListener("mouseout", () => {
+  cobraImg.style.borderColor = "#c8cf45";
+  cobraImg.style.height = "150px";
+  textImg.style.color = "#c8cf45";
 });
   }
 catch {
@@ -51,6 +50,8 @@ const snakeColor = "lightgreen";
 const snakeBorder = "black";
 const foodColor = "red";
 const unitSize = 25;
+const eatAudio = new Audio('eatAudio.mp3');
+const gameOverAudio = new Audio('gameOverSk.wav');
 let running = false;
 let xVelocity = unitSize;
 let yVelocity = 0;
@@ -64,6 +65,20 @@ let snake = [
   {x:unitSize, y:0},
   {x:0, y:0}
 ];
+
+const volumeBtn = document.querySelector("#volumeBtn");
+volumeBtn.addEventListener("click", () => {
+  if (volumeBtn.src == "https://cdn-icons-png.flaticon.com/512/6996/6996058.png") {
+    volumeBtn.src = "https://cdn-icons-png.flaticon.com/512/727/727240.png";
+    volumeBtn.style.height = "40px";
+    volumeBtn.style.top = "5px";
+  }
+  else {
+    volumeBtn.src = "https://cdn-icons-png.flaticon.com/512/6996/6996058.png"
+    volumeBtn.style.height = "50px";
+    volumeBtn.style.top = "0px";
+  }
+});
 
 window.addEventListener("keydown", changeDirection);
 if (gameStart) {
@@ -79,6 +94,7 @@ function gameStart(){
   createFood();
   drawFood();
   nextTick();
+  gameOverAudio.pause();
   if (resetBtn.innerHTML == "Começar") {
     resetBtn.innerHTML = "Resetar";
   }
@@ -122,6 +138,13 @@ function moveSnake(){
     score+=1;
     scoreText.textContent = score;
     createFood();
+    if (volumeBtn.src == "https://cdn-icons-png.flaticon.com/512/6996/6996058.png") {
+      eatAudio.currentTime = 0;
+      eatAudio.play();
+    }
+    else {
+      eatAudio.pause();
+    }
   }
   else {
     snake.pop();
@@ -193,6 +216,15 @@ function displayGameOver(){
   ctx.textAlign = "center";
   ctx.fillText("FIM DE JOGO!", gameWidth / 2, gameHeight / 2);
   running = false;
+  if (!running) {
+    if (volumeBtn.src == "https://cdn-icons-png.flaticon.com/512/6996/6996058.png") {
+      gameOverAudio.currentTime = 0;
+      gameOverAudio.play();
+    }
+  }
+  else {
+    gameOverAudio.pause();
+  }
 };
 function resetGame(){
   score = 0;

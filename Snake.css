@@ -94,3 +94,18 @@ header{
     color: #5e470a;
     background-color: rgb(250, 223, 182);
 }
+.toolsBar {
+    max-width: 300px;
+    max-height: 50px;
+    position: relative;
+    top: 140px;
+    border-radius: 30px;
+    margin: 0 auto;
+    border: 2px solid #5e470a;
+    background-color: #d69739;
+}
+#volumeBtn {
+    height: 50px;
+    cursor: pointer;
+    position: relative;
+}
