@@ -49,13 +49,14 @@
     });
     
     window.addEventListener("keydown", changeDirection);
+    window.addEventListener("keyup", resetKey);
     if (gameStart) {
       resetBtn.addEventListener("click", resetGame);
     }
     else {
       resetBtn.addEventListener("click", gameStart);
     }
-    
+
     function gameStart(){
       running = true;
       scoreText.textContent = score;
@@ -142,13 +143,13 @@
       const D = 68;
       const S = 83;
       const W = 87;
-      const R = 82;
     
     
       const goingUp = (yVelocity == -unitSize);
       const goingDown = (yVelocity == unitSize);
       const goingRight = (xVelocity == unitSize);
       const goingLeft = (xVelocity == -unitSize);
+
     setTimeout(() =>{
       switch(true) {
         case(keyPressed == LEFT && !goingRight):
@@ -183,11 +184,8 @@
           xVelocity = 0;
           yVelocity = unitSize;
           break;
-          case(keyPressed == R):
-          resetGame();
-          break;
       }
-    }, 80)
+    }, 75)
     };
     
     function checkGameOver(){
@@ -260,6 +258,15 @@
                 }
             }, 100);
     };
+
+    function resetKey(event) {
+      const keyPressed = event.keyCode;
+      const R = 82;
+      if(keyPressed == R && resetBtn.innerHTML != "Começar"){
+      resetGame();
+      }
+      
+    }
     
     rst.addEventListener("mouseover", () => {
       rst.style.border = "4px solid #996600";
