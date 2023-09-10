@@ -99,6 +99,8 @@ header{
     background-color: rgb(238, 226, 208);
 }
 .toolsBar {
+    display: flex;
+    justify-content: space-around;
     max-width: 300px;
     max-height: 50px;
     position: relative;
@@ -111,5 +113,16 @@ header{
 #volumeBtn {
     height: 50px;
     cursor: pointer;
+    position: relative;
+}
+#musicBtn {
+    height: 50px;
+    cursor: pointer;
+    position: relative;
+}
+#settingsBtn {
+    height: 50px;
+    cursor: pointer;
+    transition-duration: 0.5s;
     position: relative;
 }

@@ -1,3 +1,5 @@
+    //Variáveis e Constantes
+    
     const gameBoard = document.querySelector("#gameBoard");
     const ctx = gameBoard.getContext("2d");
     const scoreText = document.querySelector("#scoreText");
@@ -9,9 +11,10 @@
     const snakeBorder = "black";
     const foodColor = "red";
     const unitSize = 25;
-    const eatAudio = new Audio('eatAudio.mp3');
-    const gameOverAudio = new Audio('gameOverSk.wav');
     const rst = document.querySelector("#resetBtn");
+    const volumeBtn = document.querySelector("#volumeBtn");
+    const musicBtn = document.querySelector("#musicBtn");
+    const settingsBtn = document.querySelector("#settingsBtn");
 
     let running = false;
     let xVelocity = unitSize;
@@ -27,8 +30,24 @@
       {x:unitSize, y:0},
       {x:0, y:0}
     ];
-    
-    const volumeBtn = document.querySelector("#volumeBtn");
+
+    //Constantes de Audio
+
+    const eatAudio = new Audio('eatAudio.mp3');
+    const gameOverAudio = new Audio('gameOverSk.wav');
+    const backgroundMusic1 = new Audio('backgroundMusic.mp3');
+
+    //Sets de Audio
+
+    eatAudio.volume = 0.8;
+
+    gameOverAudio.volume = 0.7;
+
+    backgroundMusic1.currentTime = 1;
+    backgroundMusic1.loop = true;
+
+    //Eventos de Botões
+
     volumeBtn.addEventListener("click", () => {
       if (volumeBtn.src == "https://cdn-icons-png.flaticon.com/512/6996/6996058.png") {
         volumeBtn.src = "https://cdn-icons-png.flaticon.com/512/727/727240.png";
@@ -46,17 +65,50 @@
         volumeBtn.style.height = "50px";
         volumeBtn.style.top = "0px";
       }
+
+    });
+
+    musicBtn.addEventListener("click", () => {
+      if (musicBtn.src == "https://cdn-icons-png.flaticon.com/512/122/122320.png") {
+        musicBtn.src = "https://cdn-icons-png.flaticon.com/512/9702/9702929.png";
+      }
+      else {
+        musicBtn.src = "https://cdn-icons-png.flaticon.com/512/122/122320.png"
+      }
+    });
+
+    settingsBtn.addEventListener("click", () => {
+      if (settingsBtn.style.rotate == "90deg") {
+        settingsBtn.style.rotate = "0deg";
+      }
+      else {
+        settingsBtn.style.rotate = "90deg";
+      }
+    });
+
+    rst.addEventListener("mouseover", () => {
+      rst.style.border = "4px solid #996600";
+      rst.style.width = "120px";
+    });
+    
+    rst.addEventListener("mouseout", () => {
+      rst.style.border = "4px solid #f1c343";
+      rst.style.width = "115px";
     });
     
     window.addEventListener("keydown", changeDirection);
     window.addEventListener("keyup", resetKey);
+    
     if (gameStart) {
       resetBtn.addEventListener("click", resetGame);
     }
+
     else {
       resetBtn.addEventListener("click", gameStart);
     }
 
+    //Funções do Jogo
+    
     function gameStart(){
       running = true;
       scoreText.textContent = score;
@@ -64,10 +116,12 @@
       drawFood();
       nextTick();
       gameOverAudio.pause();
+      backgroundMusic1.play();
       if (resetBtn.innerHTML == "Começar") {
         resetBtn.innerHTML = "Resetar";
       }
     };
+
     function nextTick(){
       if(running) {
         setTimeout(() =>{
@@ -81,6 +135,12 @@
       }
       else {
         displayGameOver();
+      }
+      if (running && musicBtn.src == "https://cdn-icons-png.flaticon.com/512/122/122320.png") {
+        backgroundMusic1.volume = 0.6;
+      }
+      else {
+        backgroundMusic1.volume = 0;
       }
     };
     
@@ -132,6 +192,7 @@
         ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
       })
     };
+
     function changeDirection(event){
     
       const keyPressed = event.keyCode;
@@ -149,7 +210,6 @@
       const goingDown = (yVelocity == unitSize);
       const goingRight = (xVelocity == unitSize);
       const goingLeft = (xVelocity == -unitSize);
-
     setTimeout(() =>{
       switch(true) {
         case(keyPressed == LEFT && !goingRight):
@@ -213,6 +273,10 @@
           running = false;
         }
       }
+      if (!running) {
+        backgroundMusic1.currentTime = 1;
+        backgroundMusic1.pause();
+      }
     };
 
     function displayGameOver(){
@@ -266,14 +330,4 @@
       resetGame();
       }
       
-    }
-    
-    rst.addEventListener("mouseover", () => {
-      rst.style.border = "4px solid #996600";
-      rst.style.width = "120px";
-    });
-    
-    rst.addEventListener("mouseout", () => {
-      rst.style.border = "4px solid #f1c343";
-      rst.style.width = "115px";
-    });
+    };
