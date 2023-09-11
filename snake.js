@@ -36,15 +36,14 @@
     const eatAudio = new Audio('eatAudio.mp3');
     const gameOverAudio = new Audio('gameOverSk.wav');
     const backgroundMusic1 = new Audio('backgroundMusic.mp3');
+    const backgroundMusic2 = new Audio('backgroundMusic2.mp3');
+    const backgroundMusic3 = new Audio('backgroundMusic3.mp3');
 
     //Sets de Audio
 
     eatAudio.volume = 0.8;
 
     gameOverAudio.volume = 0.7;
-
-    backgroundMusic1.currentTime = 1;
-    backgroundMusic1.loop = true;
 
     //Eventos de Botões
 
@@ -116,7 +115,7 @@
       drawFood();
       nextTick();
       gameOverAudio.pause();
-      backgroundMusic1.play();
+      randomMusic();
       if (resetBtn.innerHTML == "Começar") {
         resetBtn.innerHTML = "Resetar";
       }
@@ -130,6 +129,7 @@
           moveSnake();
           drawSnake();
           checkGameOver();
+          replaySong()
           nextTick();
         }, 75)
       }
@@ -138,9 +138,13 @@
       }
       if (running && musicBtn.src == "https://cdn-icons-png.flaticon.com/512/122/122320.png") {
         backgroundMusic1.volume = 0.6;
+        backgroundMusic2.volume = 0.6;
+        backgroundMusic3.volume = 0.6;
       }
       else {
         backgroundMusic1.volume = 0;
+        backgroundMusic2.volume = 0;
+        backgroundMusic3.volume = 0;
       }
     };
     
@@ -274,8 +278,12 @@
         }
       }
       if (!running) {
-        backgroundMusic1.currentTime = 1;
+        backgroundMusic1.currentTime = 0;
+        backgroundMusic2.currentTime = 0;
+        backgroundMusic3.currentTime = 0;
         backgroundMusic1.pause();
+        backgroundMusic2.pause();
+        backgroundMusic3.pause();
       }
     };
 
@@ -330,4 +338,36 @@
       resetGame();
       }
       
+    };
+
+    function randomMusic() {
+      const randomNum = Math.round(Math.random() * 2 + 1);
+      backgroundMusic1.pause();
+      backgroundMusic2.pause();
+      backgroundMusic3.pause();
+      switch(randomNum) {
+        case 1:
+          backgroundMusic1.play();
+          break;
+          case 2: 
+          backgroundMusic2.play();
+          break;
+          case 3:
+            backgroundMusic3.play();
+            break;
+      }
+    };
+
+    function replaySong() {
+      switch(true) {
+        case backgroundMusic1.currentTime == backgroundMusic1.duration:
+          randomMusic();
+          break;
+          case backgroundMusic2.currentTime == backgroundMusic2.duration:
+          randomMusic();
+          break;
+          case backgroundMusic3.currentTime == backgroundMusic3.duration:
+          randomMusic();
+          break;
+      }
     };
