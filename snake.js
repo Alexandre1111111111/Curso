@@ -39,6 +39,7 @@ const gameOverAudio = new Audio('gameOverSk.wav');
 const backgroundMusic1 = new Audio('backgroundMusic.mp3');
 const backgroundMusic2 = new Audio('backgroundMusic2.mp3');
 const backgroundMusic3 = new Audio('backgroundMusic3.mp3');
+const backgroundMusic4 = new Audio('backgroundMusic4.mp3');
 
 //Sets de Audio
 
@@ -47,6 +48,7 @@ eatAudio.volume = 0.8;
 backgroundMusic1.volume = 0.6;
 backgroundMusic2.volume = 0.6;
 backgroundMusic3.volume = 0.6;
+backgroundMusic4.volume = 0.6;
 
 gameOverAudio.volume = 0.7;
 
@@ -143,11 +145,13 @@ function nextTick(){
     backgroundMusic1.muted = false;
     backgroundMusic2.muted = false;
     backgroundMusic3.muted = false;
+    backgroundMusic4.muted = false;
   }
   else {
     backgroundMusic1.muted = true;
     backgroundMusic2.muted = true;
     backgroundMusic3.muted = true;
+    backgroundMusic4.muted = true;
   }
 };
 
@@ -284,9 +288,11 @@ function checkGameOver(){
     backgroundMusic1.currentTime = 0;
     backgroundMusic2.currentTime = 0;
     backgroundMusic3.currentTime = 0;
+    backgroundMusic4.currentTime = 0;
     backgroundMusic1.pause();
     backgroundMusic2.pause();
     backgroundMusic3.pause();
+    backgroundMusic4.pause();
   }
 };
 
@@ -354,21 +360,26 @@ function resetKey(event) {
 //Funções de Música
 
 function randomMusic() {
-  const randomNum = Math.round(Math.random() * 2 + 1);
+  const randomNum = Math.round(Math.random() * 3 + 1);
   switch(randomNum) {
     case 1:
       backgroundMusic1.play();
-      break;
-      case 2: 
+    break;
+    case 2: 
       setTimeout(() => {
       backgroundMusic2.play();
       }, 300);
-      break;
-      case 3:
-        setTimeout(() => {
-        backgroundMusic3.play();
-        }, 300);
-        break;
+    break;
+    case 3:
+      setTimeout(() => {
+      backgroundMusic3.play();
+      }, 300);
+    break;
+    case 4:
+      setTimeout(() => {
+      backgroundMusic4.play();
+      }, 300);
+    break;
   }
 };
 
@@ -378,16 +389,21 @@ function replaySong() {
       backgroundMusic1.pause();
       backgroundMusic1.currentTime = 0;
       randomMusic();
-      break;
-      case backgroundMusic2.currentTime == backgroundMusic2.duration:
-        backgroundMusic2.pause();
-        backgroundMusic2.currentTime = 0;
+    break;
+    case backgroundMusic2.currentTime == backgroundMusic2.duration:
+      backgroundMusic2.pause();
+      backgroundMusic2.currentTime = 0;
       randomMusic();
-      break;
-      case backgroundMusic3.currentTime == backgroundMusic3.duration:
-        backgroundMusic3.pause();
-        backgroundMusic3.currentTime = 0;
+    break;
+    case backgroundMusic3.currentTime == backgroundMusic3.duration:
+      backgroundMusic3.pause();
+      backgroundMusic3.currentTime = 0;
       randomMusic();
-      break;
+    break;
+    case backgroundMusic4.currentTime == backgroundMusic4.duration:
+      backgroundMusic4.pause();
+      backgroundMusic4.currentTime = 0;
+      randomMusic();
+    break;
   }
 };
