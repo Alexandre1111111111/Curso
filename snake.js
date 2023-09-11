@@ -35,6 +35,7 @@
 
     const eatAudio = new Audio('eatAudio.mp3');
     const gameOverAudio = new Audio('gameOverSk.wav');
+    
     const backgroundMusic1 = new Audio('backgroundMusic.mp3');
     const backgroundMusic2 = new Audio('backgroundMusic2.mp3');
     const backgroundMusic3 = new Audio('backgroundMusic3.mp3');
@@ -43,6 +44,10 @@
 
     eatAudio.volume = 0.8;
 
+    backgroundMusic1.volume = 0.6;
+    backgroundMusic2.volume = 0.6;
+    backgroundMusic3.volume = 0.6;
+
     gameOverAudio.volume = 0.7;
 
     //Eventos de Botões
@@ -50,6 +55,8 @@
     volumeBtn.addEventListener("click", () => {
       if (volumeBtn.src == "https://cdn-icons-png.flaticon.com/512/6996/6996058.png") {
         volumeBtn.src = "https://cdn-icons-png.flaticon.com/512/727/727240.png";
+        volumeBtn.style.marginLeft = "6px";
+        volumeBtn.style.marginRight = "6px";
         if (gameOverAudio.play) {
           gameOverAudio.pause();
         }
@@ -63,6 +70,8 @@
         volumeBtn.src = "https://cdn-icons-png.flaticon.com/512/6996/6996058.png"
         volumeBtn.style.height = "50px";
         volumeBtn.style.top = "0px";
+        volumeBtn.style.marginLeft = "0px";
+        volumeBtn.style.marginRight = "0px";
       }
 
     });
@@ -97,14 +106,8 @@
     
     window.addEventListener("keydown", changeDirection);
     window.addEventListener("keyup", resetKey);
-    
-    if (gameStart) {
-      resetBtn.addEventListener("click", resetGame);
-    }
 
-    else {
-      resetBtn.addEventListener("click", gameStart);
-    }
+    gameStart ? resetBtn.addEventListener("click", resetGame) : resetBtn.addEventListener("click", gameStart);
 
     //Funções do Jogo
     
@@ -137,14 +140,14 @@
         displayGameOver();
       }
       if (running && musicBtn.src == "https://cdn-icons-png.flaticon.com/512/122/122320.png") {
-        backgroundMusic1.volume = 0.6;
-        backgroundMusic2.volume = 0.6;
-        backgroundMusic3.volume = 0.6;
+        backgroundMusic1.muted = false;
+        backgroundMusic2.muted = false;
+        backgroundMusic3.muted = false;
       }
       else {
-        backgroundMusic1.volume = 0;
-        backgroundMusic2.volume = 0;
-        backgroundMusic3.volume = 0;
+        backgroundMusic1.muted = true;
+        backgroundMusic2.muted = true;
+        backgroundMusic3.muted = true;
       }
     };
     
@@ -296,7 +299,15 @@
       }
       else if (setValue == 1) {
         ctx.fillText("FIM DE JOGO!", gameWidth / 2, gameHeight / 2);
+        ctx.font = "35px Roboto";
+        ctx.fillStyle = "#bf7021";
+        if(score == 1) {
+          ctx.fillText(`Você marcou ${score} ponto`, gameWidth / 2, 300);
         }
+        else{
+          ctx.fillText(`Você marcou ${score} pontos`, gameWidth / 2, 300);
+        }
+      }
 
       running = false;
       if (!running) {
@@ -339,6 +350,8 @@
       }
       
     };
+
+    //Funções de Música
 
     function randomMusic() {
       const randomNum = Math.round(Math.random() * 2 + 1);
