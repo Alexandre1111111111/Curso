@@ -72,8 +72,10 @@ header{
 #gameBoard {
     position: relative;
     top: 120px;
-    border: 3px solid;
+    border: 5px solid;
+    border-radius: 15px;
     background-color: rgb(250, 223, 182);
+    transition-duration: 2.5s;
 }
 #scoreText {
     position: relative;

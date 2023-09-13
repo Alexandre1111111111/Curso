@@ -15,8 +15,10 @@ const rst = document.querySelector("#resetBtn");
 const volumeBtn = document.querySelector("#volumeBtn");
 const musicBtn = document.querySelector("#musicBtn");
 const settingsBtn = document.querySelector("#settingsBtn");
+const tBar = document.querySelector("#tBar");
 
 let running = false;
+let bgstyle;
 let xVelocity = unitSize;
 let yVelocity = 0;
 let foodX;
@@ -102,7 +104,7 @@ rst.addEventListener("mouseover", () => {
 });
 
 rst.addEventListener("mouseout", () => {
-  rst.style.border = "4px solid #f1c343";
+  rst.style.border = bgstyle;
   rst.style.width = "115px";
 });
 
@@ -363,19 +365,23 @@ function randomMusic() {
   const randomNum = Math.round(Math.random() * 3 + 1);
   switch(randomNum) {
     case 1:
+      bg1Style();
       backgroundMusic1.play();
     break;
     case 2: 
+      bg2Style();
       setTimeout(() => {
       backgroundMusic2.play();
       }, 300);
     break;
     case 3:
+      bg3Style();
       setTimeout(() => {
       backgroundMusic3.play();
       }, 300);
     break;
     case 4:
+      bg4Style();
       setTimeout(() => {
       backgroundMusic4.play();
       }, 300);
@@ -384,6 +390,7 @@ function randomMusic() {
 };
 
 function replaySong() {
+    setTimeout(() => {
   switch(true) {
     case backgroundMusic1.currentTime == backgroundMusic1.duration:
       backgroundMusic1.pause();
@@ -406,4 +413,39 @@ function replaySong() {
       randomMusic();
     break;
   }
+}, 1000);
+};
+
+//Funções de Estilo
+
+function bg1Style() {
+  bgstyle = "5px solid #cf5408";
+  gameBoard.style.border = "5px solid #cf5408";
+  gameBoard.style.boxShadow = "3px 3px 3px #cf5408";
+  resetBtn.style.border = bgstyle;
+  resetBtn.style.boxShadow = "3px 3px 3px #cf5408";
+};
+
+function bg2Style() {
+  bgstyle = "5px solid #edda7b";
+  gameBoard.style.border = "5px solid #edda7b";
+  gameBoard.style.boxShadow = "3px 3px 3px #edda7b";
+  resetBtn.style.border = bgstyle;
+  resetBtn.style.boxShadow = "3px 3px 3px #edda7b";
+};
+
+function bg3Style() {
+  bgstyle = "5px solid #4ecfde";
+  gameBoard.style.border = "5px solid #4ecfde";
+  gameBoard.style.boxShadow = "3px 3px 3px #4ecfde";
+  resetBtn.style.border = bgstyle;
+  resetBtn.style.boxShadow = "3px 3px 3px #4ecfde";
+};
+
+function bg4Style() {
+  bgstyle = "5px solid #b373d9";
+  gameBoard.style.border = "5px solid #b373d9";
+  gameBoard.style.boxShadow = "3px 3px 3px #b373d9";
+  resetBtn.style.border = bgstyle;
+  resetBtn.style.boxShadow = "3px 3px 3px #b373d9";
 };
