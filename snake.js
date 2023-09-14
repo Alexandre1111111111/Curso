@@ -16,7 +16,14 @@ const volumeBtn = document.querySelector("#volumeBtn");
 const musicBtn = document.querySelector("#musicBtn");
 const settingsBtn = document.querySelector("#settingsBtn");
 const tBar = document.querySelector("#tBar");
+const timer = document.querySelector("#timer");
 
+let startTime = 0;
+let elapsedTime = 0;
+let mins = 0;
+let secs = 0;
+let paused = true;
+let intervalid;
 let running = false;
 let bgstyle;
 let xVelocity = unitSize;
@@ -126,6 +133,11 @@ function gameStart(){
   if (resetBtn.innerHTML == "Começar") {
     resetBtn.innerHTML = "Resetar";
   }
+  if(paused) {
+    paused = false;
+    startTime = Date.now() - elapsedTime;
+    intervalid = setInterval(updateTime, 1000);
+  }
 };
 
 function nextTick(){
@@ -142,6 +154,7 @@ function nextTick(){
   }
   else {
     displayGameOver();
+    pauseTimer();
   }
   if (running && musicBtn.src == "https://cdn-icons-png.flaticon.com/512/122/122320.png") {
     backgroundMusic1.muted = false;
@@ -332,6 +345,7 @@ function displayGameOver(){
 function resetGame(){
     running = false;
     gameOverAudio.pause();
+    resetTimer();
     score = 0;
     xVelocity = unitSize;
     yVelocity = 0;
@@ -449,3 +463,35 @@ function bg4Style() {
   resetBtn.style.border = bgstyle;
   resetBtn.style.boxShadow = "3px 3px 3px #b373d9";
 };
+
+function updateTime() {
+  elapsedTime = Date.now() - startTime;
+
+  secs = Math.floor((elapsedTime / 1000) % 60);
+
+  mins = Math.floor((elapsedTime / (1000 * 60)) % 60);
+
+  secs = pad(secs);
+  mins = pad(mins);
+
+  timer.textContent = `${mins}:${secs}`;
+
+  function pad(unit) {
+    return (("0") + unit).length > 2 ? unit : "0" + unit;
+  }
+}
+
+function pauseTimer() {
+  paused = true;
+  elapsedTime = Date.now() - startTime;
+  clearInterval(intervalid);
+}
+
+function resetTimer() {
+  clearInterval(intervalid);
+  startTime = 0;
+  elapsedTime = 0;
+  mins = 0;
+  secs = 0;
+  timer.textContent = "00:00";
+}

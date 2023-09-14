@@ -75,12 +75,12 @@ header{
     border: 5px solid;
     border-radius: 15px;
     background-color: rgb(250, 223, 182);
-    transition-duration: 2.5s;
+    transition-duration: 3s;
 }
 #scoreText {
     position: relative;
-    top: 120px;
-    font-size: 100px;
+    top: 110px;
+    font-size: 80px;
     margin: 0 auto;
 }
 #resetBtn {
@@ -127,4 +127,19 @@ header{
     cursor: pointer;
     transition-duration: 0.5s;
     position: relative;
+}
+#timer {
+    font-size: 20px;
+    color: #c8cf45;
+}
+#timerCt {
+    text-align: center;
+    border: 2px solid #d69739;
+    border-radius: 15px;
+    background-color: #804e04;
+    top: 100px;
+    position: relative;
+    max-width: 115px;
+    max-height: 50px;
+    margin: 0 auto;
 }
