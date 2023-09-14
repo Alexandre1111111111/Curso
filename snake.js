@@ -24,6 +24,7 @@ let mins = 0;
 let secs = 0;
 let paused = true;
 let intervalid;
+
 let running = false;
 let bgstyle;
 let xVelocity = unitSize;
@@ -345,7 +346,7 @@ function displayGameOver(){
 function resetGame(){
     running = false;
     gameOverAudio.pause();
-    resetTimer();
+    pauseTimer();
     score = 0;
     xVelocity = unitSize;
     yVelocity = 0;
@@ -357,6 +358,7 @@ function resetGame(){
         {x:0, y:0},
         ];
         setTimeout(() => {
+          resetTimer();
             if(!running) {
                 gameStart();
                 setValue = 0;
@@ -463,6 +465,8 @@ function bg4Style() {
   resetBtn.style.border = bgstyle;
   resetBtn.style.boxShadow = "3px 3px 3px #b373d9";
 };
+
+//Funções de Timer
 
 function updateTime() {
   elapsedTime = Date.now() - startTime;
