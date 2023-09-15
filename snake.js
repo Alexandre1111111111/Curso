@@ -51,14 +51,15 @@ const backgroundMusic2 = new Audio('backgroundMusic2.mp3');
 const backgroundMusic3 = new Audio('backgroundMusic3.mp3');
 const backgroundMusic4 = new Audio('backgroundMusic4.mp3');
 
+const Musics = [backgroundMusic1, backgroundMusic2, backgroundMusic3, backgroundMusic4];
+
 //Sets de Audio
 
 eatAudio.volume = 0.8;
 
-backgroundMusic1.volume = 0.6;
-backgroundMusic2.volume = 0.6;
-backgroundMusic3.volume = 0.6;
-backgroundMusic4.volume = 0.6;
+for(let i = 0; i < Musics.length; i++) {
+  Musics[i].volume = 0.6;
+}
 
 gameOverAudio.volume = 0.7;
 
@@ -119,7 +120,7 @@ rst.addEventListener("mouseout", () => {
 window.addEventListener("keydown", changeDirection);
 window.addEventListener("keyup", resetKey);
 
-gameStart ? resetBtn.addEventListener("click", resetGame) : resetBtn.addEventListener("click", gameStart);
+resetBtn.addEventListener("click", resetGame);
 
 //Funções do Jogo
 
@@ -129,8 +130,8 @@ function gameStart(){
   createFood();
   drawFood();
   nextTick();
-  gameOverAudio.pause();
   randomMusic();
+  gameOverAudio.pause();
   if (resetBtn.innerHTML == "Começar") {
     resetBtn.innerHTML = "Resetar";
   }
@@ -158,16 +159,14 @@ function nextTick(){
     pauseTimer();
   }
   if (running && musicBtn.src == "https://cdn-icons-png.flaticon.com/512/122/122320.png") {
-    backgroundMusic1.muted = false;
-    backgroundMusic2.muted = false;
-    backgroundMusic3.muted = false;
-    backgroundMusic4.muted = false;
+    for(let i = 0; i < Musics.length; i++) {
+      Musics[i].muted = false;
+    }
   }
   else {
-    backgroundMusic1.muted = true;
-    backgroundMusic2.muted = true;
-    backgroundMusic3.muted = true;
-    backgroundMusic4.muted = true;
+    for(let i = 0; i < Musics.length; i++) {
+      Musics[i].muted = true;
+    }
   }
 };
 
@@ -301,14 +300,12 @@ function checkGameOver(){
     }
   }
   if (!running) {
-    backgroundMusic1.currentTime = 0;
-    backgroundMusic2.currentTime = 0;
-    backgroundMusic3.currentTime = 0;
-    backgroundMusic4.currentTime = 0;
-    backgroundMusic1.pause();
-    backgroundMusic2.pause();
-    backgroundMusic3.pause();
-    backgroundMusic4.pause();
+    for(let i = 0; i < Musics.length; i++) {
+      Musics[i].currentTime = 0;
+    }
+    for(let i = 0; i < Musics.length; i++) {
+      Musics[i].pause();
+    }
   }
 };
 
@@ -379,6 +376,7 @@ function resetKey(event) {
 
 function randomMusic() {
   const randomNum = Math.round(Math.random() * 3 + 1);
+  
   switch(randomNum) {
     case 1:
       bg1Style();
