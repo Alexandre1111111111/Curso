@@ -26,7 +26,9 @@ let paused = true;
 let intervalid;
 
 let running = false;
-let bgstyle;
+let bgstyle = "4px solid #f1c343";
+let textrstColor;
+let bgborder = "4px solid #996600";
 let xVelocity = unitSize;
 let yVelocity = 0;
 let foodX;
@@ -108,12 +110,14 @@ settingsBtn.addEventListener("click", () => {
 });
 
 rst.addEventListener("mouseover", () => {
-  rst.style.border = "4px solid #996600";
+  rst.style.border = bgborder;
+  rst.style.color = textrstColor;
   rst.style.width = "120px";
 });
 
 rst.addEventListener("mouseout", () => {
   rst.style.border = bgstyle;
+  rst.style.color = "#5e470a";
   rst.style.width = "115px";
 });
 
@@ -271,7 +275,7 @@ setTimeout(() =>{
       yVelocity = unitSize;
       break;
   }
-}, 75)
+}, 65)
 };
 
 function checkGameOver(){
@@ -434,6 +438,8 @@ function replaySong() {
 
 function bg1Style() {
   bgstyle = "5px solid #cf5408";
+  bgborder = "5px solid #fc6203";
+  textrstColor = "#e33109";
   gameBoard.style.border = "5px solid #cf5408";
   gameBoard.style.boxShadow = "3px 3px 3px #cf5408";
   resetBtn.style.border = bgstyle;
@@ -442,6 +448,8 @@ function bg1Style() {
 
 function bg2Style() {
   bgstyle = "5px solid #edda7b";
+  bgborder = "5px solid #cffc03";
+  textrstColor = "#ba942d";
   gameBoard.style.border = "5px solid #edda7b";
   gameBoard.style.boxShadow = "3px 3px 3px #edda7b";
   resetBtn.style.border = bgstyle;
@@ -450,6 +458,8 @@ function bg2Style() {
 
 function bg3Style() {
   bgstyle = "5px solid #4ecfde";
+  bgborder = "5px solid #1a90c7";
+  textrstColor = "#107ac2";
   gameBoard.style.border = "5px solid #4ecfde";
   gameBoard.style.boxShadow = "3px 3px 3px #4ecfde";
   resetBtn.style.border = bgstyle;
@@ -458,6 +468,8 @@ function bg3Style() {
 
 function bg4Style() {
   bgstyle = "5px solid #b373d9";
+  textrstColor = "#ed05ca";
+  bgborder = "5px solid #c013d4";
   gameBoard.style.border = "5px solid #b373d9";
   gameBoard.style.boxShadow = "3px 3px 3px #b373d9";
   resetBtn.style.border = bgstyle;
