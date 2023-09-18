@@ -17,6 +17,7 @@ const musicBtn = document.querySelector("#musicBtn");
 const settingsBtn = document.querySelector("#settingsBtn");
 const tBar = document.querySelector("#tBar");
 const timer = document.querySelector("#timer");
+const box = document.querySelector("#setBox");
 
 let startTime = 0;
 let elapsedTime = 0;
@@ -101,6 +102,12 @@ musicBtn.addEventListener("click", () => {
 });
 
 settingsBtn.addEventListener("click", () => {
+  if (box.style.display == "grid") {
+    box.style.display = "none";
+  }
+  else {
+    box.style.display = "grid";
+  }
   if (settingsBtn.style.rotate == "90deg") {
     settingsBtn.style.rotate = "0deg";
   }
@@ -370,7 +377,7 @@ function resetGame(){
 function resetKey(event) {
   const keyPressed = event.keyCode;
   const R = 82;
-  if(keyPressed == R && resetBtn.innerHTML != "Começar"){
+  if(keyPressed == R && resetBtn.innerHTML != "Começar" && secs >= 1 || !running){
   resetGame();
   }
   
@@ -508,4 +515,20 @@ function resetTimer() {
   mins = 0;
   secs = 0;
   timer.textContent = "00:00";
+}
+
+setInterval(blockButton, 75);
+
+function blockButton() {
+  if (secs <= 1) {
+    if(resetBtn.innerHTML == "Começar" || !running) {
+      resetBtn.style.pointerEvents = "all";
+    }
+    else {
+    resetBtn.style.pointerEvents = "none";
+    }
+  }
+  else {
+    resetBtn.style.pointerEvents = "all";
+  }
 }
