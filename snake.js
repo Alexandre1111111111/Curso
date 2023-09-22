@@ -135,7 +135,10 @@ resetBtn.addEventListener("click", resetGame);
 
 //Funções do Jogo
 
+setInterval(blockButton, 0);
+
 function gameStart(){
+  setTimeout(() => {
   running = true;
   scoreText.textContent = score;
   createFood();
@@ -151,6 +154,7 @@ function gameStart(){
     startTime = Date.now() - elapsedTime;
     intervalid = setInterval(updateTime, 1000);
   }
+}, 25)
 };
 
 function nextTick(){
@@ -377,8 +381,10 @@ function resetGame(){
 function resetKey(event) {
   const keyPressed = event.keyCode;
   const R = 82;
-  if(keyPressed == R && resetBtn.innerHTML != "Começar" && secs >= 1 || !running){
+  if(keyPressed == R && resetBtn.innerHTML != "Começar"){
+    if(secs >= 1 && mins == 0 || !running) {
   resetGame();
+    }
   }
   
 };
@@ -517,10 +523,10 @@ function resetTimer() {
   timer.textContent = "00:00";
 }
 
-setInterval(blockButton, 75);
+//Bloquear Botão
 
 function blockButton() {
-  if (secs <= 1) {
+  if (secs <= 1 && mins == 0) {
     if(resetBtn.innerHTML == "Começar" || !running) {
       resetBtn.style.pointerEvents = "all";
     }
