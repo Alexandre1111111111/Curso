@@ -109,8 +109,9 @@ header{
     top: 140px;
     border-radius: 30px;
     margin: 0 auto;
-    border: 2px solid #5e470a;
+    border: 2px solid #b83a0d;
     background-color: #d69739;
+    transition-duration: 2s;
 }
 #volumeBtn {
     height: 50px;
@@ -131,6 +132,7 @@ header{
 #timer {
     font-size: 20px;
     color: #c8cf45;
+    transition-duration: 2s;
 }
 #timerCt {
     text-align: center;
@@ -142,6 +144,7 @@ header{
     max-width: 115px;
     max-height: 50px;
     margin: 0 auto;
+    transition-duration: 2s;
 }
 #toolDrop {
     display: inline-block;

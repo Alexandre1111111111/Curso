@@ -18,6 +18,7 @@ const settingsBtn = document.querySelector("#settingsBtn");
 const tBar = document.querySelector("#tBar");
 const timer = document.querySelector("#timer");
 const box = document.querySelector("#setBox");
+const timerCt = document.querySelector("#timerCt");
 
 let startTime = 0;
 let elapsedTime = 0;
@@ -453,6 +454,10 @@ function bg1Style() {
   bgstyle = "5px solid #cf5408";
   bgborder = "5px solid #fc6203";
   textrstColor = "#e33109";
+  timerCt.style.border = "2px solid #f5990f";
+  scoreText.style.textShadow = "2px 2px 2px #f5990f";
+  tBar.style.border = "2px solid #c90e0e";
+  timer.style.color = "#d5e072";
   gameBoard.style.border = "5px solid #cf5408";
   gameBoard.style.boxShadow = "3px 3px 3px #cf5408";
   resetBtn.style.border = bgstyle;
