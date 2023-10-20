@@ -1,0 +1,106 @@
+html {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(255, 219, 58);
+    font-family: "Roboto", sans-serif;
+}
+body{
+    background: url(Snakeback.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    line-height: 1.5;
+}
+header{
+    background: center / cover url(head.jpg);
+    position: fixed;
+    top: 0px;
+    height: 90px;
+}
+.Eng {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 7px;
+}
+.Eng img {
+    max-height: 70px;
+    visibility: visible;
+}
+.btnMain {
+    display: inline-block;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+}
+.Eng a{
+    display: block;
+    color: rgb(99, 57, 10);
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px 15px;
+    text-align: left;
+    border: 1px solid #d69739;
+}
+.drop {
+    display: none;
+    position: absolute;
+    background-color: rgb(247, 235, 59);
+    left: -5px;
+    min-width: 100px;
+    box-shadow: 1px 1px 1px #000;
+    z-index: 1;
+    min-height: 3000px;
+}
+.show {
+    display:block;
+}
+.drop a:hover {
+    background-color: #c8cf45;
+}
+.head {
+    background-color: rgb(92, 218, 218);
+    border: 3px solid rgb(188, 246, 82);
+    right: 0px;
+    left: 0px;
+}
+#pongBoard {
+    margin: 0 auto;
+    margin-top: 140px;
+    background: rgb(0, 0, 0);
+    border: 3px solid #fff;
+    border-radius: 10px;
+}
+#pongScore {
+    font-size: 75px;
+    color: rgb(158, 229, 206);
+    text-shadow: 3px 3px 3px #4c75e6;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+#resetPong {
+    font-size: 40px;
+    transition-duration: 0.3s;
+    border: 3px solid #88a4f1;
+    border-radius: 20px;
+    color: rgb(16, 91, 134);
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+}
+#pontos {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 50%;
+    align-items: center;
+}
+#computerScore {
+    font-size: 75px;
+    color: rgb(158, 229, 206);
+    text-shadow: 3px 3px 3px #4c75e6;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
