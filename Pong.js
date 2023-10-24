@@ -3,6 +3,7 @@
 const pongBoard = document.querySelector("#pongBoard");
 const pongScore = document.querySelector("#pongScore");
 const resetPong = document.querySelector("#resetPong");
+const checkP = document.querySelector("#twop");
 const computerScore = document.querySelector("#computerScore");
 const ctxPong = pongBoard.getContext("2d");
 const gameWidth = pongBoard.width;
@@ -10,7 +11,10 @@ const gameHeight = pongBoard.height;
 const boardBackground = "black";
 const ballColor = "white";
 
-let ballVel = 10;
+let vel = 3.5;
+let borderBall = "white";
+let CpadVel = 3.5;
+let ballVel = vel;
 let running = false;
 let pontoJ = 0;
 let pontoC = 0;
@@ -24,13 +28,13 @@ let padJ = {
     width: 10,
     height: 100,
     x: 20,
-    y: gameHeight / 2 - 30
+    y: gameHeight / 2 + 20
 }
 let padC = {
     width: 10,
     height: 100,
     x: gameWidth - 30,
-    y: gameHeight / 2 - 30
+    y: gameHeight / 2 + 20
 }
 
 window.addEventListener("keydown", movePad);
@@ -70,9 +74,18 @@ function nextTick() {
             moveBall();
             drawPad();
             checkcollision();
-            moveCpad();
+            if (checkP.checked) {
+                window.addEventListener("keydown", secondP);
+            }
+            else {
+                window.removeEventListener("keydown", secondP);
+                moveCpad();
+            }
             nextTick();
-        },25)
+        }, 10)
+    }
+    else {
+        clearBoard();
     }
 }
 
@@ -106,8 +119,8 @@ function gameStart() {
     setTimeout(() => { 
     running = true;
     random();
-    drawBall();
     nextTick();
+    resetPong.style.pointerEvents = "all";
     pongScore.textContent = pontoJ;
     computerScore.textContent = pontoC;
     }, 4000)
@@ -120,6 +133,8 @@ function clearBoard(){
 
 function drawBall() {
     ctxPong.fillStyle = ballColor;
+    ctxPong.strokeStyle = borderBall;
+    ctxPong.lineWidth = 5;
     ctxPong.beginPath();
     ctxPong.arc(ballx, bally, 10, 0, 2 * Math.PI)
     ctxPong.stroke();
@@ -127,10 +142,14 @@ function drawBall() {
 }
 
 function drawPad() {
+    ctxPong.strokeStyle = "white";
     ctxPong.fillRect(padJ.x, padJ.y, padJ.width, padJ.height);
     ctxPong.strokeStyle = "white";
     ctxPong.fillRect(padC.x, padC.y, padC.width, padC.height);
-    ctxPong.strokeStyle = "white";
+    ctxPong.strokeStyle = "blue";
+    ctxPong.strokeRect(padJ.x, padJ.y, padJ.width, padJ.height);
+    ctxPong.strokeStyle = "red";
+    ctxPong.strokeRect(padC.x, padC.y, padC.width, padC.height);
 }
 
 function movePad(event) {
@@ -153,23 +172,23 @@ function movePad(event) {
 
 function moveCpad() {
     if(xVelocity > 0) {
-        if(padC.y > 0) {
+        if(padC.y > 18) {
         if(padC.y != bally) {
         if(yVelocity == -1) {
-            padC.y -= 9;
+            padC.y -= CpadVel;
         }
-        else if(padC.y > gameHeight - padC.height || padC.y < 5) {
-            if(bally < 50) {
+        else if(padC.y > gameHeight - padC.height) {
+            if(bally < 26) {
                 padC.y = bally;
-                }
+            }
         }
         else {
-            padC.y += 9; 
+            padC.y += CpadVel; 
         }
     }
     }
     else {
-        if(bally < 45) {
+        if(bally < 26) {
             padC.y = bally;
         }
     }
@@ -192,14 +211,18 @@ function checkcollision() {
         pontoC+=1;
         updateScore();
         random();
-        ballVel = 10;
+        ballVel = vel;
+        CpadVel = 3.5;
+        borderBall = "white";
         return;
     }
     if (ballx >= gameWidth) {
         pontoJ+=1;
         updateScore();
         random();
-        ballVel = 10;
+        ballVel = vel;
+        CpadVel = 3.5;
+        borderBall = "white";
         return;
     }
     if (ballx <= (padJ.x + padJ.width + 10)) {
@@ -207,13 +230,17 @@ function checkcollision() {
             ballx = (padJ.x + padJ.width) + 10;
             xVelocity *= -1;
             ballVel += 0.25;
+            borderBall = "blue";
+            CpadVel += 0.1;
         }
     }
     if (ballx >= (padC.x - 10)) {
         if(bally > padC.y && bally < padC.y + padC.height) {
-            ballx = (padC.x + padC.width) - 10;
+            ballx = (padC.x + padC.width) - 20;
             xVelocity *= -1;
             ballVel += 0.25;
+            borderBall = "red";
+            CpadVel += 0.1;
         }
     }
 }
@@ -223,7 +250,26 @@ function updateScore() {
     computerScore.textContent = `${pontoC}`;
 }
 
+function secondP(event) {
+    const keyPressed = event.keyCode;
+    const UP = 38;
+    const DOWN = 40;
+    switch (keyPressed) {
+        case (UP):
+            if(padC.y > 18) {
+                padC.y -= 15;
+            }
+        break;
+        case (DOWN):
+            if(padC.y < gameHeight - padC.height - 3) {
+                padC.y += 15;
+            }
+        break;
+    }
+}
+
 function resetGame() {
+    resetPong.style.pointerEvents = "none";
     running = false;
     pontoC = 0;
     pontoJ = 0;
@@ -241,7 +287,8 @@ function resetGame() {
     }
     xVelocity = 0;
     yVelocity = 0;
-    ballVel = 10;
+    ballVel = vel;
+    CpadVel = 3.5;
     counter = 3;
     updateScore();
     gameStart();

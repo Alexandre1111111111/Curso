@@ -68,8 +68,8 @@ header{
     margin: 0 auto;
     margin-top: 140px;
     background: rgb(0, 0, 0);
-    border: 3px solid #fff;
-    border-radius: 10px;
+    border: 3px solid;
+    border-image:   linear-gradient(to right,blue 30%, rgb(255, 0, 98) 55%, red 50%) 1;
 }
 #pongScore {
     font-size: 75px;
@@ -83,11 +83,21 @@ header{
     font-size: 40px;
     transition-duration: 0.3s;
     border: 3px solid #88a4f1;
+    background-color: #b5c9ff;
+    text-shadow: 1px 1px 1px #000;
     border-radius: 20px;
     color: rgb(16, 91, 134);
     width: 180px;
     height: 60px;
     cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+#resetPong:hover {
+    box-shadow: 3px 3px 3px #4c3fff;
+    border: 3px solid #3d6be9;
+    color: rgb(18, 134, 201);
 }
 #pontos {
     display: flex;
@@ -99,8 +109,36 @@ header{
 #computerScore {
     font-size: 75px;
     color: rgb(158, 229, 206);
-    text-shadow: 3px 3px 3px #4c75e6;
+    text-shadow: 3px 3px 3px #e64c4c;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+}
+.modo {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 30px;
+    color: #6258eb;
+    text-shadow: 1px 1px 5px rgba(214, 116, 206, 0.7);
+}
+#twop {
+    appearance: none;
+    cursor: pointer;
+    -ms-transform: scale(2);
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    margin: 15px;
+    border-radius : 10px;
+    height: 15px;
+    width: 15px;
+    box-shadow: inset 1px 1px 5px rgb(158, 28, 158);
+    background-color: #4c4977;
+    border: 1px solid #eb2929;
+}
+#twop:checked {
+    background: url("https://cdn-icons-png.flaticon.com/512/6819/6819287.png");
+    background-position: center;
+    background-size: cover;
 }

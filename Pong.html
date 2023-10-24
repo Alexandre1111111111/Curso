@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong - Curso Técnico</title>
     <link rel="stylesheet" href="Pong.css">
+    <link rel="Icon" href="https://cdn-icons-png.flaticon.com/512/2665/2665626.png">
 </head>
 <body>
     <header class="head">            
@@ -19,11 +20,14 @@
             </div>
         </div>
      </header>
-     <canvas id="pongBoard" width="800" height="550"></canvas>
+     <canvas id="pongBoard" width="850" height="550"></canvas>
      <div id="pontos">
      <div id="pongScore">0</div>
-     <button id="resetPong">Começar</button>
+     <button tabindex="-1" id="resetPong">Começar</button>
      <div id="computerScore">0</div>
+    </div>
+    <div class="modo">
+        <input tabindex="-1" type="checkbox" id="twop">Modo 2 Jogadores
     </div>
      <script src="script.js"></script>
      <script src="Pong.js"></script>

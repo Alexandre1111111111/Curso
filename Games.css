@@ -13,6 +13,7 @@ body{
     background-size: cover;
     margin: 0;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 header{
     background: center / cover url(head.jpg);
@@ -69,8 +70,12 @@ header{
 }
 .Jog {
     display: flex;
-    justify-content: center;
-    padding: 100px;
+    align-items: center;
+    border: 3px solid #d69739;
+    width: 99.3%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    justify-content: space-evenly;
 }
 #Snk {
     height: 150px;
@@ -84,5 +89,19 @@ header{
     color: #f7ff62;
 }
 #Sk {
+    text-decoration: none;
+}
+#pgimg {
+    height: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #c8cf45;
+    cursor: pointer;
+}
+#pong {
+    margin: 0px;
+    color: #f7ff62;
+}
+#pg {
     text-decoration: none;
 }
