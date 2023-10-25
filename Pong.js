@@ -178,8 +178,10 @@ function moveCpad() {
             padC.y -= CpadVel;
         }
         else if(padC.y > gameHeight - padC.height) {
-            if(bally < 26) {
+            if(bally < 25) {
+                    setTimeout(() => {
                 padC.y = bally;
+                    }, 30)
             }
         }
         else {
@@ -188,8 +190,10 @@ function moveCpad() {
     }
     }
     else {
-        if(bally < 26) {
+        if(bally < 25) {
+            setTimeout(() => {
             padC.y = bally;
+            }, 30)
         }
     }
     }
@@ -231,7 +235,7 @@ function checkcollision() {
             xVelocity *= -1;
             ballVel += 0.25;
             borderBall = "blue";
-            CpadVel += 0.1;
+            CpadVel += 0.15;
         }
     }
     if (ballx >= (padC.x - 10)) {
@@ -240,7 +244,7 @@ function checkcollision() {
             xVelocity *= -1;
             ballVel += 0.25;
             borderBall = "red";
-            CpadVel += 0.1;
+            CpadVel += 0.15;
         }
     }
 }

@@ -5,27 +5,42 @@ html {
     font-family: "Roboto", sans-serif;
 }
 body{
-    background: url(Snakeback.jpg);
+    background: url(Pgimg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     margin: 0;
     line-height: 1.5;
+    overflow: hidden;
 }
 header{
-    background: center / cover url(head.jpg);
+    background: center / cover url(hd.jpg);
     position: fixed;
     top: 0px;
     height: 90px;
+    background-position: center;
+    background-size: cover;
+    width: 99.3%;
 }
 .Eng {
     display: inline-block;
     position: absolute;
-    left: 0px;
+    left: 8px;
     top: 7px;
+    height: 80%;
+    border: 3px solid #142961;
+    border-radius: 150px;
+    background-color: #446ee0;
+    transition-duration: 0.3s;
 }
 .Eng img {
-    max-height: 70px;
+    max-height: 50px;
     visibility: visible;
+    padding-top: 7px;
+}
+.Eng:hover{
+    border-color:  #9466e9;
+    background-color: #7d96dd;
 }
 .btnMain {
     display: inline-block;
@@ -35,32 +50,37 @@ header{
 }
 .Eng a{
     display: block;
-    color: rgb(99, 57, 10);
+    color: rgb(160, 162, 255);
     text-decoration: none;
     font-size: 30px;
     padding: 10px 15px;
     text-align: left;
-    border: 1px solid #d69739;
+    border-bottom: 2px solid #135f5b;
+    background-color: #812085;
+    text-shadow: 1px 1px 3px #093533;
+    box-shadow: inset 1px 1px 5px #2a4eaf;
 }
 .drop {
     display: none;
     position: absolute;
-    background-color: rgb(247, 235, 59);
-    left: -5px;
+    background-color: #81116f;
+    top: 83px;
+    left: -14px;
     min-width: 100px;
     box-shadow: 1px 1px 1px #000;
     z-index: 1;
     min-height: 3000px;
+    box-shadow: 5px 5px 20px #4c3fff;
 }
 .show {
     display:block;
 }
 .drop a:hover {
-    background-color: #c8cf45;
+    transition-duration: 0.3s;
+    background-color: #b381eb;
 }
 .head {
-    background-color: rgb(92, 218, 218);
-    border: 3px solid rgb(188, 246, 82);
+    border: 3px solid rgb(124, 88, 223);
     right: 0px;
     left: 0px;
 }
@@ -103,8 +123,13 @@ header{
     display: flex;
     justify-content: space-evenly;
     margin: 0 auto;
+    height: 100px;
     width: 50%;
     align-items: center;
+    background-color: #142961;
+    border: 3px solid #3d6be9;
+    border-radius: 150px;
+    box-shadow: 5px 5px 5px #4c3fff;
 }
 #computerScore {
     font-size: 75px;
@@ -122,6 +147,7 @@ header{
     font-size: 30px;
     color: #6258eb;
     text-shadow: 1px 1px 5px rgba(214, 116, 206, 0.7);
+    margin-top: 20px;
 }
 #twop {
     appearance: none;
