@@ -21,6 +21,11 @@ header{
     background-position: center;
     background-size: cover;
     width: 99.3%;
+    transition-duration: 0.3s;
+}
+.head:hover {
+    box-shadow: inset 0px 0px 5px 5px rgba(100, 0, 100, 1);
+    border: 3px solid rgb(85, 56, 165);
 }
 .Eng {
     display: inline-block;
@@ -91,9 +96,11 @@ header{
     border: 3px solid;
     border-image:   linear-gradient(to right,blue 30%, rgb(255, 0, 98) 55%, red 50%) 1;
     cursor: url(alvo.png), auto;
+    box-shadow: 1px 0px 3px 5px #361f88;
 }
 #pongScore {
     font-size: 75px;
+    width: 30%;
     color: rgb(158, 229, 206);
     text-shadow: 3px 3px 3px #4c75e6;
     user-select: none;
@@ -131,11 +138,17 @@ header{
     border: 3px solid #3d6be9;
     border-radius: 150px;
     box-shadow: 5px 5px 5px #4c3fff;
+    transition-duration: 0.3s;
+}
+#pontos:hover {
+    border: 3px solid #27479e;
+    box-shadow: 5px 5px 15px #3e34c9;
 }
 #computerScore {
     font-size: 75px;
     color: rgb(158, 229, 206);
     text-shadow: 3px 3px 3px #e64c4c;
+    width: 30%;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;

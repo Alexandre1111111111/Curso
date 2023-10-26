@@ -15,7 +15,10 @@ let vel = 3.5;
 let borderBall = "white";
 let CpadVel = 3.5;
 let ballVel = vel;
+let shadowBall = "white";
 let running = false;
+let campCol1 = "rgba(0, 0, 255, 0.3)";
+let campCol2 = "rgba(255, 0, 0, 0.3)";
 let pontoJ = 0;
 let pontoC = 0;
 let xVelocity;
@@ -37,9 +40,13 @@ let padC = {
     y: gameHeight / 2 + 20
 }
 
+//Eventos
+
 window.addEventListener("keydown", movePad);
 
 resetPong.addEventListener("click", resetGame);
+
+//Funções do Jogo
 
 function random() {
     randomBall = Math.floor((Math.random() * 4) + 1);
@@ -70,6 +77,7 @@ function nextTick() {
     if(running) {
         setTimeout(() => {
             clearBoard();
+            drawCamp();
             drawBall();
             moveBall();
             drawPad();
@@ -90,6 +98,8 @@ function gameStart() {
     ctxPong.font = "100px sans-serif";
     ctxPong.fillStyle = "#09b1db";
     ctxPong.textAlign = "center";
+    ctxPong.shadowBlur = 10;
+    ctxPong.shadowColor = "#ff0000";
     ctxPong.fillText(`${counter}`, gameWidth / 2, gameHeight / 2 + 20);
     counter--;
     const intersec = setInterval(() => {
@@ -98,6 +108,8 @@ function gameStart() {
         ctxPong.font = "100px sans-serif";
         ctxPong.fillStyle = "#09b1db";
         ctxPong.textAlign = "center";
+        ctxPong.shadowBlur = 10;
+        ctxPong.shadowColor = "#ff0000";
         if(counter != 0) {
             ctxPong.fillText(`${counter}`, gameWidth / 2, gameHeight / 2 + 20);
         }
@@ -125,17 +137,16 @@ function clearBoard(){
     ctxPong.fillRect(0, 0, gameWidth, gameHeight)
 };
 
-function drawBall() {
-    ctxPong.fillStyle = ballColor;
-    ctxPong.strokeStyle = borderBall;
-    ctxPong.lineWidth = 5;
-    ctxPong.beginPath();
-    ctxPong.arc(ballx, bally, 10, 0, 2 * Math.PI)
-    ctxPong.stroke();
-    ctxPong.fill();
-}
-
-function drawPad() {
+function drawCamp() {
+    if(xVelocity == 1) {
+        campCol1 = "rgba(0, 0, 255, 0.3)";
+        campCol2 = "rgba(255, 0, 0, 0.7)";
+    }
+    else {
+        campCol1 = "rgba(0, 0, 255, 0.7)";
+        campCol2 = "rgba(255, 0, 0, 0.3)";
+    }
+    ctxPong.shadowBlur = 0;
     ctxPong.strokeStyle = "blue";
     ctxPong.lineWidth = 1;
     ctxPong.beginPath();
@@ -147,6 +158,54 @@ function drawPad() {
     ctxPong.moveTo(gameWidth / 2 + 1, 0);
     ctxPong.lineTo(gameWidth / 2 + 1, gameHeight);
     ctxPong.stroke();
+
+    ctxPong.strokeStyle = campCol1;
+    ctxPong.shadowBlur = 10;
+    ctxPong.shadowColor = "white";
+    ctxPong.lineWidth = 10;
+
+    ctxPong.beginPath();
+    ctxPong.moveTo(gameWidth / 2 - 150, gameHeight / 2 - 60);
+    ctxPong.lineTo(gameWidth / 2 - 90, gameHeight / 2);
+    ctxPong.lineTo(gameWidth / 2 - 150, gameHeight / 2 + 60);
+    ctxPong.stroke();
+    ctxPong.beginPath();
+    ctxPong.moveTo(150, gameHeight / 2 - 30);
+    ctxPong.lineTo(180, gameHeight / 2);
+    ctxPong.lineTo(150, gameHeight / 2 + 30);
+    ctxPong.stroke();
+
+    ctxPong.strokeStyle = campCol2;
+    ctxPong.shadowBlur = 10;
+    ctxPong.shadowColor = "white";
+    ctxPong.lineWidth = 10;
+
+    ctxPong.beginPath();
+    ctxPong.moveTo(gameWidth / 2 + 150, gameHeight / 2 - 60);
+    ctxPong.lineTo(gameWidth / 2 + 90, gameHeight / 2);
+    ctxPong.lineTo(gameWidth / 2 + 150, gameHeight / 2 + 60);
+    ctxPong.stroke();
+    ctxPong.beginPath();
+    ctxPong.moveTo(gameWidth - 150, gameHeight / 2 - 30);
+    ctxPong.lineTo(gameWidth - 180, gameHeight / 2);
+    ctxPong.lineTo(gameWidth - 150, gameHeight / 2 + 30);
+    ctxPong.stroke();
+}
+
+function drawBall() {
+    ctxPong.shadowBlur = 20;
+    ctxPong.shadowColor = shadowBall;
+    ctxPong.fillStyle = ballColor;
+    ctxPong.strokeStyle = borderBall;
+    ctxPong.lineWidth = 2;
+    ctxPong.beginPath();
+    ctxPong.arc(ballx, bally, 10, 0, 2 * Math.PI)
+    ctxPong.stroke();
+    ctxPong.fill();
+}
+
+function drawPad() {
+    ctxPong.shadowBlur = 0;
     ctxPong.lineWidth = 5;
     ctxPong.strokeStyle = "white";
     ctxPong.fillRect(padJ.x, padJ.y, padJ.width, padJ.height);
@@ -178,7 +237,7 @@ function movePad(event) {
 
 function moveCpad() {
     if(xVelocity > 0) {
-        if(padC.y > 18) {
+        if(padC.y > 0) {
         if(padC.y != bally) {
         if(yVelocity == -1 && ballx < gameWidth - 60) {
             padC.y -= CpadVel;
@@ -224,6 +283,7 @@ function checkcollision() {
         ballVel = vel;
         CpadVel = 3.5;
         borderBall = "white";
+        shadowBall = "white";
         return;
     }
     if (ballx >= gameWidth) {
@@ -233,6 +293,7 @@ function checkcollision() {
         ballVel = vel;
         CpadVel = 3.5;
         borderBall = "white";
+        shadowBall = "white";
         return;
     }
     if (ballx <= (padJ.x + padJ.width + 10)) {
@@ -242,6 +303,7 @@ function checkcollision() {
             ballVel += 0.25;
             borderBall = "blue";
             CpadVel += 0.15;
+            shadowBall = "blue";
         }
     }
     if (ballx >= (padC.x - 10)) {
@@ -251,6 +313,7 @@ function checkcollision() {
             ballVel += 0.25;
             borderBall = "red";
             CpadVel += 0.15;
+            shadowBall = "red";
         }
     }
 }
