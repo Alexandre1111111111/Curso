@@ -84,15 +84,9 @@ function nextTick() {
             nextTick();
         }, 10)
     }
-    else {
-        clearBoard();
-    }
 }
 
 function gameStart() {
-    if(resetPong.innerHTML == "Começar") {
-        resetPong.innerHTML = "Resetar";
-    }
     ctxPong.font = "100px sans-serif";
     ctxPong.fillStyle = "#09b1db";
     ctxPong.textAlign = "center";
@@ -142,6 +136,18 @@ function drawBall() {
 }
 
 function drawPad() {
+    ctxPong.strokeStyle = "blue";
+    ctxPong.lineWidth = 1;
+    ctxPong.beginPath();
+    ctxPong.moveTo(gameWidth / 2 - 1, 0);
+    ctxPong.lineTo(gameWidth / 2 - 1, gameHeight);
+    ctxPong.stroke();
+    ctxPong.strokeStyle = "red";
+    ctxPong.beginPath();
+    ctxPong.moveTo(gameWidth / 2 + 1, 0);
+    ctxPong.lineTo(gameWidth / 2 + 1, gameHeight);
+    ctxPong.stroke();
+    ctxPong.lineWidth = 5;
     ctxPong.strokeStyle = "white";
     ctxPong.fillRect(padJ.x, padJ.y, padJ.width, padJ.height);
     ctxPong.strokeStyle = "white";
@@ -174,7 +180,7 @@ function moveCpad() {
     if(xVelocity > 0) {
         if(padC.y > 18) {
         if(padC.y != bally) {
-        if(yVelocity == -1) {
+        if(yVelocity == -1 && ballx < gameWidth - 60) {
             padC.y -= CpadVel;
         }
         else if(padC.y > gameHeight - padC.height) {
@@ -184,7 +190,7 @@ function moveCpad() {
                     }, 30)
             }
         }
-        else {
+        else if(ballx < gameWidth - 60) {
             padC.y += CpadVel; 
         }
     }
@@ -273,6 +279,12 @@ function secondP(event) {
 }
 
 function resetGame() {
+    if(resetPong.innerHTML == "Começar") {
+        resetPong.innerHTML = "Resetar";
+    }
+    const interid = setInterval(() => {
+        clearBoard();
+    }, 20)
     resetPong.style.pointerEvents = "none";
     running = false;
     pontoC = 0;
@@ -295,5 +307,8 @@ function resetGame() {
     CpadVel = 3.5;
     counter = 3;
     updateScore();
+    setTimeout(() => {
+        clearInterval(interid);
     gameStart();
+    }, 100)
 }
