@@ -1,6 +1,7 @@
 #tlt {
     padding-top: 120px;
     text-shadow: 3px 3px 2px #000;
+    color: #e4b978;
 }
 html {
     text-align: center;
@@ -72,10 +73,17 @@ header{
     display: flex;
     align-items: center;
     border: 3px solid #d69739;
-    width: 99.3%;
+    width: 90%;
+    border-radius: 100px;
     padding-top: 100px;
     padding-bottom: 100px;
     justify-content: space-evenly;
+    background-color: #4b1a03;
+    margin: 0 auto;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    box-shadow: inset 0px 0px 7px 5px #000;
 }
 #Snk {
     height: 150px;

@@ -37,6 +37,9 @@ header{
     border-radius: 150px;
     background-color: #446ee0;
     transition-duration: 0.3s;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 .Eng img {
     max-height: 50px;
