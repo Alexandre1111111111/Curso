@@ -143,6 +143,10 @@ header{
     box-shadow: 5px 5px 5px #4c3fff;
     transition-duration: 0.3s;
 }
+#pontos:hover + #timer {
+    border: 3px solid #27479e;
+    box-shadow: 5px 5px 15px #3e34c9;
+}
 #pontos:hover {
     border: 3px solid #27479e;
     box-shadow: 5px 5px 15px #3e34c9;
@@ -179,9 +183,27 @@ header{
     box-shadow: inset 1px 1px 5px rgb(158, 28, 158);
     background-color: #4c4977;
     border: 1px solid #eb2929;
+    transition-duration: 0.3s;
 }
 #twop:checked {
     background: url("https://cdn-icons-png.flaticon.com/512/6819/6819287.png");
     background-position: center;
     background-size: cover;
+}
+#twop:hover {
+    box-shadow: inset 0px 0px 1px 1px #1252c9;
+}
+#timer {
+    box-shadow: 5px 5px 5px #4c3fff;
+    color: #7ee2d1;
+    background-color: #142961;
+    width: 10%;
+    margin: 0 auto;
+    border: 3px solid #3d6be9;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition-duration: 0.3s;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }

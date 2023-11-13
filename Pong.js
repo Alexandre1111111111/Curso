@@ -10,6 +10,14 @@ const gameWidth = pongBoard.width;
 const gameHeight = pongBoard.height;
 const boardBackground = "black";
 const ballColor = "white";
+const timer = document.querySelector("#timer");
+
+let startTime = 0;
+let elapsedTime = 0;
+let mins = 0;
+let secs = 0;
+let paused = true;
+let intervalid;
 
 let vel = 3.5;
 let borderBall = "white";
@@ -129,6 +137,11 @@ function gameStart() {
     resetPong.style.pointerEvents = "all";
     pongScore.textContent = pontoJ;
     computerScore.textContent = pontoC;
+    if(paused) {
+        paused = false;
+        startTime = Date.now() - elapsedTime;
+        intervalid = setInterval(updateTime, 1000);
+      }ww
     }, 4000)
 }
 
@@ -342,6 +355,7 @@ function secondP(event) {
 }
 
 function resetGame() {
+    pauseTimer();
     if(resetPong.innerHTML == "Começar") {
         resetPong.innerHTML = "Resetar";
     }
@@ -371,7 +385,41 @@ function resetGame() {
     counter = 3;
     updateScore();
     setTimeout(() => {
+        resetTimer();
         clearInterval(interid);
     gameStart();
     }, 100)
 }
+
+function updateTime() {
+    elapsedTime = Date.now() - startTime;
+  
+    secs = Math.floor((elapsedTime / 1000) % 60);
+  
+    mins = Math.floor((elapsedTime / (1000 * 60)) % 60);
+  
+    secs = pad(secs);
+    mins = pad(mins);
+  
+    timer.textContent = `${mins}:${secs}`;
+  
+    function pad(unit) {
+      return (("0") + unit).length > 2 ? unit : "0" + unit;
+    }
+  }
+  
+  function pauseTimer() {
+    paused = true;
+    elapsedTime = Date.now() - startTime;
+    clearInterval(intervalid);
+  }
+  
+  function resetTimer() {
+    clearInterval(intervalid);
+    startTime = 0;
+    elapsedTime = 0;
+    mins = 0;
+    secs = 0;
+    timer.textContent = "00:00";
+  }
+  
