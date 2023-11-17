@@ -11,6 +11,9 @@ const gameHeight = pongBoard.height;
 const boardBackground = "black";
 const ballColor = "white";
 const timer = document.querySelector("#timer");
+const ballveloc = document.querySelector("#ballvel");
+const turn = document.querySelector("#turn");
+const turno = document.querySelector("#turno")
 
 let startTime = 0;
 let elapsedTime = 0;
@@ -90,6 +93,8 @@ function nextTick() {
             moveBall();
             drawPad();
             checkcollision();
+            ballvel();
+            changeTeam();
             if (checkP.checked) {
                 window.addEventListener("keydown", secondP);
             }
@@ -99,6 +104,10 @@ function nextTick() {
             }
             nextTick();
         }, 10)
+    }
+    else {
+        ballveloc.textContent = "0.00x"
+        turno.style.visibility = "hidden";
     }
 }
 
@@ -141,7 +150,8 @@ function gameStart() {
         paused = false;
         startTime = Date.now() - elapsedTime;
         intervalid = setInterval(updateTime, 1000);
-      }ww
+      }
+    turno.style.visibility = "visible";
     }, 4000)
 }
 
@@ -408,18 +418,32 @@ function updateTime() {
     }
   }
   
-  function pauseTimer() {
+function pauseTimer() {
     paused = true;
     elapsedTime = Date.now() - startTime;
     clearInterval(intervalid);
-  }
+}
   
-  function resetTimer() {
+function resetTimer() {
     clearInterval(intervalid);
     startTime = 0;
     elapsedTime = 0;
     mins = 0;
     secs = 0;
     timer.textContent = "00:00";
-  }
-  
+}
+
+function ballvel() {
+    ballveloc.textContent = `${ballVel}x`
+}
+
+function changeTeam() {
+    if(xVelocity == 1) {
+        turno.style.backgroundColor = "red";
+        turno.style.borderColor = "#850303";
+    }
+    else {
+        turno.style.backgroundColor = "blue";
+        turno.style.borderColor = "#0f204e";
+    }
+}
